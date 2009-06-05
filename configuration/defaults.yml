@@ -1,0 +1,25 @@
+messages_per_page: 20
+routes:
+    stream:
+        controller: net_nemein_avaudu_controllers_timeline
+        action: stream
+        route: /
+        content_entry_point: nna-show-timeline
+    stream_latest_json:
+        controller: net_nemein_avaudu_controllers_timeline
+        action: stream_latest
+        route: '/latest/{$int:number}.json'
+        mimetype: application/json
+        template_entry_point: midcom-show-json
+    stream_page_json:
+        controller: net_nemein_avaudu_controllers_timeline
+        action: stream_page
+        route: '/stream/{$int:page}.json'
+        mimetype: application/json
+        template_entry_point: midcom-show-json
+    update_json:
+        controller: net_nemein_avaudu_controllers_statuses
+        action: update
+        route: '/statuses/update.json'
+        mimetype: application/json
+        template_entry_point: midcom-show-json
