@@ -8,6 +8,7 @@
         <property name="twitterid" type="string" index="yes" />
         <property name="qaikuid" type="string" index="yes" />
         <property name="source" type="string" />
+        <property name="user" type="unsigned integer" link="net_nemein_avaudu_contact:id" parentfield="user" />
     </type>
 
     <type name="net_nemein_avaudu_contact" table="net_nemein_avaudu_contact">
