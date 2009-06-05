@@ -30,7 +30,7 @@ class net_nemein_avaudu_controllers_timeline
         $status = array();
         $status['created_at'] = $message->metadata->published;
         $status['id'] = $message->guid;
-        $status['text'] = $message->message;
+        $status['text'] = $message->text;
         $status['source'] = $message->source;
         $status['lang'] = $message->language;
 
@@ -51,10 +51,53 @@ class net_nemein_avaudu_controllers_timeline
         
         if ($add_user)
         {
-            $status['user'] = $this->account2user($message->metadata->creator, false);
+            $status['user'] = $this->account2user($message->user, false);
         }
         
         return $status;
+    }
+
+    /**
+     * Convert a Avaudu contact object to the format used by the API
+     * @return array
+     */
+    public function account2user($user_id, $add_status = true)
+    {
+        static $cached_accounts = array();
+
+        if (!$user_id)
+        {
+            return false;
+        }
+
+        if (isset($cached_accounts[$user_id]))
+        {
+            return $cached_accounts[$user_id];
+        }
+        
+        $cached_accounts[$user_id] = array();
+        $contact = new net_nemein_avaudu_contact($user_id);
+        if (   !$contact
+            || !$contact->guid)
+        {
+            return $cached_accounts[$user_id];
+        }
+
+        $cached_accounts[$user_id]['id'] = $contact->guid;
+        $cached_accounts[$user_id]['name'] = "{$contact->name}";
+        
+        if ($contact->qaikunick)
+        {
+            $cached_accounts[$user_id]['screen_name'] = $contact->qaikunick;
+        }
+        else
+        {
+            $cached_accounts[$user_id]['screen_name'] = $contact->twitternick;
+        }
+        
+        $cached_accounts[$user_id]['profile_image_url'] = $contact->avatar;
+        
+        return $cached_accounts[$user_id];
     }
 
     public function action_stream($route_id, &$data, $args)
@@ -68,11 +111,10 @@ class net_nemein_avaudu_controllers_timeline
         $qb->set_limit((int) $args['number']);
         $qb->add_order('metadata.published', 'DESC');
         $messages = $qb->execute();
-        
-        $data['statuses'] = array();
+
         foreach ($messages as $message)
         {
-            $data['statuses'][] = $this->message2status($message);
+            $data[] = $this->message2status($message);
         }
         
         // TODO: New MidCOM does this way more gracefully
