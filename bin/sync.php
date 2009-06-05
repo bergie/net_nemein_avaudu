@@ -69,6 +69,10 @@ class net_nemein_avaudu_bin_sync
 
     public function fetch_qaiku()
     {
+        if (!$this->qaiku_apikey)
+        {
+            return;
+        }
         /*
         $qb = new midgard_query_builder('net_nemein_avaudu_message');
         $messages = $qb->execute();
