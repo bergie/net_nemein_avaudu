@@ -1,0 +1,49 @@
+[
+    {
+        "created_at":"Tue Jun 02 09:36:54 +0000 2009",
+        "id":"1de4f58e854cb924f5811de9272331f2b4e02ce02ce",
+        "text":"@teroheiskanen we first want to prepare things a bit :-)",
+        "lang":"en",
+        "source":"Qaiku",
+        "truncated":false,
+        "in_reply_to_status_id":"1de4f5127e1a9a44f5111dea79f31741b98a25aa25a",
+        "in_reply_to_user_id":"1de04e7a425656e04e711de8b8b03b7a324e879e879",
+        "favorited":false,
+        "user":
+        {
+            "id":"1de04e7a425656e04e711de8b8b03b7a324e879e879",
+            "name":"Henri Bergius",
+            "screen_name":
+            "bergie",
+            "location":"Helsinki, Finland",
+            "description":"",
+            "profile_image_url":"http:\/\/static.qaiku.com\/blobs\/1\/D\/1de059f85d5d784-059f-11de-8bc6-552692129e8f\/smallsquare.jpeg",
+            "url":"http:\/\/www.qaiku.com\/home\/bergie\/",
+            "protected":false,
+            "followers_count":93
+        }
+    },
+    {
+        "created_at":"Tue Jun 02 08:41:24 +0000 2009",
+        "id":"1de4f5127e1a9a44f5111dea79f31741b98a25aa25a",
+        "text":"discussing future plans for Qaiku",
+        "lang":"en",
+        "source":"Qaiku",
+        "truncated":false,
+        "in_reply_to_status_id":"",
+        "in_reply_to_user_id":"",
+        "favorited":false,
+        "user":
+        {
+            "id":"1de04e7a425656e04e711de8b8b03b7a324e879e879",
+            "name":"Henri Bergius",
+            "screen_name":"bergie",
+            "location":"Helsinki, Finland",
+            "description":"",
+            "profile_image_url":"http:\/\/static.qaiku.com\/blobs\/1\/D\/1de059f85d5d784-059f-11de-8bc6-552692129e8f\/smallsquare.jpeg",
+            "url":"http:\/\/www.qaiku.com\/home\/bergie\/",
+            "protected":false,
+            "followers_count":93
+        }
+    },
+]
