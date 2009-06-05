@@ -6,6 +6,8 @@
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License
  */
 
+require('markdown.php');
+
 /**
  * Avaudu timeline actions
  *
@@ -31,6 +33,7 @@ class net_nemein_avaudu_controllers_timeline
         $status['created_at'] = $message->metadata->published->format('c');
         $status['id'] = $message->guid;
         $status['text'] = $message->text;
+        $status['text_html'] = Markdown($message->text);
         $status['source'] = $message->source;
         $status['lang'] = $message->language;
 
