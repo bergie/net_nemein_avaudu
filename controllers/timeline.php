@@ -98,6 +98,11 @@ class net_nemein_avaudu_controllers_timeline
             $cached_accounts[$user_id]['screen_name'] = $contact->twitternick;
         }
         
+        if (   !$contact->avatar
+            || substr($contact->avatar, 0, 1) == '/')
+        {
+            $contact->avatar = '/midcom-static/net_nemein_avaudu/img/face-monkey.png';
+        }
         $cached_accounts[$user_id]['profile_image_url'] = $contact->avatar;
         
         return $cached_accounts[$user_id];
