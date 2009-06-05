@@ -4,7 +4,7 @@
         $('#main').css({'padding-top': $('#header').height(), 'padding-bottom': $('#footer').height() });
         
         // Load some initial test data to play with, later this will be replaced by a call to the actual page route
-        $.getJSON('/midcom-static/net_nemein_avaudu/fixtures/test.json',
+        $.getJSON('/latest/20.json',
         function(json) {
             var entries = '';
             for (var i = json.length - 1; i >= 0; i--){
