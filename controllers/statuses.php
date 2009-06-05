@@ -28,7 +28,6 @@ class net_nemein_avaudu_controllers_statuses
 
         $message = new net_nemein_avaudu_message();
         $message->text = $_POST['status'];
-        $message->language = $this->user->primarylanguage;        
         if (isset($_POST['lang']))
         {
             $message->language = $_POST['lang'];
@@ -44,7 +43,24 @@ class net_nemein_avaudu_controllers_statuses
             }
             $message->replyto = $parent->id;
         }
+
+        $user_guid = $_MIDCOM->context->host->get_parameter('net_nemein_avaudu', 'user');
+        if (!$user_guid)
+        {
+            throw new midcom_exception_notfound("No user found, check your settings");
+        }
+
+        $user = new net_nemein_avaudu_contact($user_guid);
+        if (!$user->guid)
+        {
+            // Invalid user setting
+            $user_guid = $_MIDCOM->context->host->set_parameter('net_nemein_avaudu', 'user', '');
+            throw new midcom_exception_notfound("No user found, check your settings");
+        }
+        $message->user = $user->id;
         
+        $message->metadata->published->modify('now');
+                
         $message->create();
 
         $data[] = net_nemein_avaudu_controllers_timeline::message2status($message);

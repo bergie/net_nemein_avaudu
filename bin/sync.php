@@ -95,7 +95,7 @@ class net_nemein_avaudu_bin_sync
         foreach ($qaikus as $qaiku)
         {
             $i++;
-            if ($i > 10)
+            if ($i > 5)
             {
                 // Safety for Create/Update crashing
                 break;
@@ -120,7 +120,7 @@ class net_nemein_avaudu_bin_sync
             $message->source = $qaiku->source;
             
             $message->user = $this->import_contact($qaiku->user, 'qaiku');
-            $message->metadata->published = gmdate('c', strtotime($qaiku->created_at));
+            $message->metadata->published->modify($qaiku->created_at);
 
             if ($qaiku->in_reply_to_status_id)
             {

@@ -28,7 +28,7 @@ class net_nemein_avaudu_controllers_timeline
         static $cached_messages = array();
 
         $status = array();
-        $status['created_at'] = $message->metadata->published;
+        $status['created_at'] = $message->metadata->published->format('c');
         $status['id'] = $message->guid;
         $status['text'] = $message->text;
         $status['source'] = $message->source;
