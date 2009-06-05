@@ -1,13 +1,7 @@
-html
-{
-/*    height: 100%; *//* footerstickalt */
-}
-
 body
 {
     margin: 0;
     padding: 0;
-/*    height: 100%; *//* footerstickalt */
 }
 
 ol, ul
@@ -24,15 +18,13 @@ ol, ul
 #container #main ol li { display: block; }
 /** Self-clearing floats */
 
-#container
-{
-/*    position: relative; *//* footerstickalt */
-/*    min-height: 100%; *//* footerstickalt */
-}
-
 #container #header
 {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #c17d11;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #8f5902;
 }
 
 #container #header ul li
@@ -42,15 +34,16 @@ ol, ul
 
 #container #main
 {
-/*    padding-bottom: 5em; *//* footerstickalt */
-    overflow-y: scroll;
 }
 
 #container #main ol li
 {
-    border: 1px solid #fff;
-    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #c17d11;
+    border-bottom: 1px solid #c17d11;
+    border-bottom: 1px solid #c17d11;
     padding: 0.25em;
+    background-color: #e9b96e;
 }
 
 #container #main ol li.selected
@@ -85,9 +78,7 @@ ol, ul
 #footer
 {
     padding: 0.25em;
-/*    position: relative;*/
-/*    margin-top: -1.9em;*/
-    background-color: #fff;
+    background-color: #8f5902;
     position: fixed;
     bottom: 0;
     width: 100%;
