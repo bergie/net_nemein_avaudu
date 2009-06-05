@@ -40,6 +40,9 @@ class net_nemein_avaudu_controllers_settings
         {    
             $data['qaiku_apikey'] = $_MIDCOM->context->host->get_parameter('net_nemein_avaudu', 'qaiku_apikey');
         }
+        
+        $sync = new net_nemein_avaudu_bin_sync();
+        $sync->fetch_qaiku();
     }
 }
 ?>
