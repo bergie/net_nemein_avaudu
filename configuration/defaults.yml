@@ -23,6 +23,8 @@ routes:
         route: '/statuses/update.json'
         mimetype: application/json
         template_entry_point: midcom-show-json
+        allowed_methods:
+            - POST
     settings:
         controller: net_nemein_avaudu_controllers_settings
         action: edit

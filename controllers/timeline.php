@@ -23,7 +23,7 @@ class net_nemein_avaudu_controllers_timeline
      *
      * @return array
      */
-    public function message2status(net_nemein_avaudu_message $message, $add_user = true)
+    static function message2status(net_nemein_avaudu_message $message, $add_user = true)
     {
         static $cached_messages = array();
 
@@ -51,7 +51,7 @@ class net_nemein_avaudu_controllers_timeline
         
         if ($add_user)
         {
-            $status['user'] = $this->account2user($message->user, false);
+            $status['user'] = net_nemein_avaudu_controllers_timeline::account2user($message->user, false);
         }
         
         return $status;
@@ -61,7 +61,7 @@ class net_nemein_avaudu_controllers_timeline
      * Convert a Avaudu contact object to the format used by the API
      * @return array
      */
-    public function account2user($user_id, $add_status = true)
+    static function account2user($user_id, $add_status = true)
     {
         static $cached_accounts = array();
 
@@ -114,7 +114,7 @@ class net_nemein_avaudu_controllers_timeline
 
         foreach ($messages as $message)
         {
-            $data[] = $this->message2status($message);
+            $data[] = net_nemein_avaudu_controllers_timeline::message2status($message);
         }
         
         // TODO: New MidCOM does this way more gracefully
@@ -134,7 +134,7 @@ class net_nemein_avaudu_controllers_timeline
         $data['statuses'] = array();
         foreach ($messages as $message)
         {
-            $data['statuses'][] = $this->message2status($message);
+            $data['statuses'][] = net_nemein_avaudu_controllers_timeline::message2status($message);
         }
         
         // TODO: New MidCOM does this way more gracefully
