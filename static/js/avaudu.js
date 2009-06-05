@@ -8,7 +8,7 @@
         function(json) {
             var entries = '';
             for (var i = json.length - 1; i >= 0; i--){
-                entries += '<li class="" id="'+json[i].id+'"><div class="profile"><img src="'+json[i].user.profile_image_url+'" /></div><div class="content"><p class="author">'+json[i].user.screen_name+'</p><div class="entry">'+json[i].text+'</div></div></li>';
+                entries += '<li class="" id="'+json[i].id+'"><div class="profile"><img src="'+json[i].user.profile_image_url+'" /></div><div class="content"><p class="author">'+json[i].user.screen_name+'</p><div class="entry">'+json[i].html_text+'</div></div></li>';
             };
             $activity = $('<ol />').attr('id','activity').append(entries);
             $('#main').html($activity);

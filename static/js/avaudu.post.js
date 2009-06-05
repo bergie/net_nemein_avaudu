@@ -13,7 +13,7 @@
                     $activity = $('#main #activity');
                     if ($activity.size() > 0)
                     {
-                        $activity.prepend('<li class="" id="'+json[0].id+'"><div class="profile"><img src="'+json[0].user.profile_image_url+'" /></div><div class="content"><p class="author">'+json[0].user.screen_name+'</p><div class="entry">'+json[0].text+'</div></div></li>');
+                        $activity.prepend('<li class="" id="'+json[0].id+'"><div class="profile"><img src="'+json[0].user.profile_image_url+'" /></div><div class="content"><p class="author">'+json[0].user.screen_name+'</p><div class="entry">'+json[0].text_html+'</div></div></li>');
                     }
                 },
                 "json");
