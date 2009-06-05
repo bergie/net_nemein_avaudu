@@ -60,6 +60,7 @@ class net_nemein_avaudu_controllers_statuses
         $message->user = $user->id;
         
         $message->metadata->published->modify('now');
+        $message->source = 'Avaudu';
                 
         $message->create();
 

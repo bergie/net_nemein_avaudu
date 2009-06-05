@@ -30,3 +30,8 @@ routes:
         action: edit
         route: /settings
         content_entry_point: nna-show-settings
+    sync:
+        controller: net_nemein_avaudu_controllers_settings
+        action: sync
+        route: /sync
+        content_entry_point: nna-show-sync

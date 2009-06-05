@@ -66,9 +66,11 @@ class net_nemein_avaudu_controllers_settings
             // Save the settings
             $_MIDCOM->context->host->set_parameter('net_nemein_avaudu', 'qaiku_apikey', $data['qaiku_apikey']);
         }
-
-        // Run sync here. Ugly but necessary until we have php-cli in the bundle        
-        $sync = new net_nemein_avaudu_bin_sync();
+    }
+    
+    public function action_sync()
+    {     
+        $sync = new net_nemein_avaudu_sync();
         $sync->fetch_qaiku();
     }
 }
