@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Schema xmlns="http://www.midgard-project.org/repligard/1.4">
-    <type name="net_nemein_avaudu_message">
+    <type name="net_nemein_avaudu_message" table="net_nemein_avaudu_message">
         <property name="id" type="unsigned integer" primaryfield="id" />
         <property name="text" type="text" />
         <property name="replyto" type="unsigned integer" link="net_nemein_avaudu_message:id" upfield="replyto" />
@@ -10,7 +10,7 @@
         <property name="source" type="string" />
     </type>
 
-    <type name="net_nemein_avaudu_contact">
+    <type name="net_nemein_avaudu_contact" table="net_nemein_avaudu_contact">
         <property name="id" type="unsigned integer" primaryfield="id" />
         <property name="name" type="string" />
         <property name="avatar" type="string" />
