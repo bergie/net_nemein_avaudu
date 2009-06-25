@@ -13,12 +13,12 @@
  */
 class net_nemein_avaudu_controllers_statuses
 {
-    public function __construct($instance)
+    public function __construct(midcom_core_component_interface $instance)
     {
         $this->configuration = $instance->configuration;
     }
 
-    public function action_update($route_id, &$data, $args)
+    public function post_update($args)
     {
         if (   !isset($_POST['status'])
             || empty($_POST['status']))
@@ -64,12 +64,7 @@ class net_nemein_avaudu_controllers_statuses
                 
         $message->create();
 
-        $data[] = net_nemein_avaudu_controllers_timeline::message2status($message);
-
-        // TODO: Do via variants instead
-        header('Content-type: application/json');
-        echo json_encode($data);
-        die();
+        $this->data[] = net_nemein_avaudu_controllers_timeline::message2status($message);
     }
 }
 ?>
