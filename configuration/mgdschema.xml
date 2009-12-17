@@ -11,14 +11,12 @@
         <property name="user" type="unsigned integer" link="net_nemein_avaudu_contact:id" parentfield="user" />
     </type>
 
-    <type name="net_nemein_avaudu_contact" table="net_nemein_avaudu_contact">
-        <property name="id" type="unsigned integer" primaryfield="id" />
-        <property name="name" type="string" />
-        <property name="avatar" type="string" />
-        <property name="twitterid" type="string" index="yes" />
-        <property name="twitternick" type="string" index="yes" />
-        <property name="qaikuid" type="string" index="yes" />
-        <property name="qaikunick" type="string" index="yes" />
+    <type name="net_nemein_avaudu_contact" extends="midgard_person">
+        <property name="avatar" field="avatar" type="string" />
+        <property name="twitterid" field="twitterid" type="string" index="yes" />
+        <property name="twitternick" field="twitternick" type="string" index="yes" />
+        <property name="qaikuid" field="qaikuid" type="string" index="yes" />
+        <property name="qaikunick" field="qaikunick" type="string" index="yes" />
     </type>
 </Schema>
 
