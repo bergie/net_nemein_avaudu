@@ -11,7 +11,7 @@
  *
  * @package net_nemein_avaudu
  */
-class net_nemein_avaudu extends midcom_core_component_baseclass
+class net_nemein_avaudu extends midgardmvc_core_component_baseclass
 {
 }
 ?>

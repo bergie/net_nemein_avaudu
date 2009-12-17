@@ -20,8 +20,12 @@ class net_nemein_avaudu_controllers_settings
 
     public function action_edit($route_id, &$data, $args)
     {
+        midgardmvc_core::get_instance()->authorization->require_user();
+        $person = midgardmvc_core::get_instance()->authentication->get_person();
+        $contact = new net_nemein_avaudu_contact($person->guid);
+
         // Read current settings from host
-        $data['qaiku_apikey'] = $_MIDCOM->context->host->get_parameter('net_nemein_avaudu', 'qaiku_apikey');
+        $data['qaiku_apikey'] = $person->get_parameter('net_nemein_avaudu', 'qaiku_apikey');
 
         // Update things as we go
         if (isset($_POST['qaiku_apikey']))
@@ -48,23 +52,21 @@ class net_nemein_avaudu_controllers_settings
                 $contacts = $qb->execute();
                 if (count($contacts) > 0)
                 {
-                    $_MIDCOM->context->host->set_parameter('net_nemein_avaudu', 'user', $contacts[0]->guid);
+                    $person->set_parameter('net_nemein_avaudu', 'user', $contacts[0]->guid);
                 }
                 else
                 {
-                    // "Me" isn't in database yet, create
-                    $contact = new net_nemein_avaudu_contact();
+                    // Populate "Me" into database
                     $contact->qaikunick = $qaiku_user->screen_name;
                     $contact->name = $qaiku_user->name;
                     $contact->avatar = $qaiku_user->profile_image_url;
                     $contact->qaikuid = $qaiku_user->id;
-                    $contact->create();
-                    $_MIDCOM->context->host->set_parameter('net_nemein_avaudu', 'user', $contact->guid);
+                    $contact->update();
                 }
             }
             
             // Save the settings
-            $_MIDCOM->context->host->set_parameter('net_nemein_avaudu', 'qaiku_apikey', $data['qaiku_apikey']);
+            $person->set_parameter('net_nemein_avaudu', 'qaiku_apikey', $data['qaiku_apikey']);
         }
     }
     
